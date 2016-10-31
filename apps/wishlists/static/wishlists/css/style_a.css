@@ -1,0 +1,14 @@
+h1{
+    display: inline-block;
+}
+
+#header{
+    display: inline-block;
+    margin-left: 500px;
+    margin-top: 10px;
+}
+
+#header a{
+    display: inline-block;
+    margin-left: 10px;
+}

@@ -1,0 +1,17 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+.form{
+  display: block;
+}
+
+.block{
+  border: 1.5px solid grey;
+  display: inline-block;
+  width: 280px;
+  height: 410px;
+  vertical-align: top;
+  padding: 15px;
+}

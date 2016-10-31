@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>My Wish List</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'wishlists/css/style_d.css' %}" media="screen">
+    </head>
+    <body>
+        <div id="header">
+            <h1>Hello, {{user.name}}!</h1>
+            <a id="logout" href="{% url 'login:logout' %}">Logout</a>
+        </div>
+        <div id="uwishlist">
+            <h4>Your Wish List:</h4>
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Added By</th>
+                    <th>Date Added</th>
+                    <th>Action</th>
+                </tr>
+                {% for product in products %}
+                <tr class='border'>
+                    <td><a href="{% url 'wishlist:product' id=product.id %}">{{product.name}}</a></td>
+                    <td>{{product.adder.name}}</td>
+                    <td>{{product.created_at|date:"M d, Y"}}</td>
+                    <td><a href="{% url 'wishlist:removeproduct' id=product.id%}">Remove from my wishlist</a></td>
+                </tr>
+                {% endfor %}
+                {% for product in myproducts %}
+                <tr class='border'>
+                    <td><a href="{% url 'wishlist:product' id=product.id %}">{{product.name}}</a></td>
+                    <td>{{product.adder.name}}</td>
+                    <td>{{product.created_at|date:"M d, Y"}}</td>
+                    <td><a href="{% url 'wishlist:delete' id=product.id %}">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+        <div id="owishlist">
+            <h4>Other Users' Wish List:</h4>
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Added By</th>
+                    <th>Date Added</th>
+                    <th>Action</th>
+                </tr>
+                {% for product in otherproducts %}
+                <tr class='border'>
+                    <td><a href="{% url 'wishlist:product' id=product.id %}">{{product.name}}</a></td>
+                    <td>{{product.adder.name}}</td>
+                    <td>{{product.created_at|date:"M d, Y"}}</td>
+                    <td><a href="{% url 'wishlist:addproduct' id=product.id %}">Add to my wishlists</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <a id="create" href="{% url 'wishlist:create' %}">Add Item</a>
+    </body>
+</html>

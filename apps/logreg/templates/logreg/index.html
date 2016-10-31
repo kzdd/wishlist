@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login|Registration</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'logreg/css/style.css' %}"media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    <h1>Welcome!</h1>
+    <div class="block">
+      <h1>
+        Registration
+      </h1>
+           {%if messages%}
+               {%for message in messages%}
+                 {% if message.tags == 'error'%}
+                 <p>{{message}}</p>
+                 {%endif%}
+               {%endfor%}
+             {%endif%}
+
+      <form class="" action="/process" method="post">
+      {%csrf_token%}
+             <label class='form'>Name: <input type="text" name="name"></label><br>
+             <label class='form'>Username: <input type="text" name="username"></label><br>
+             <label class='form'>Password: <input type="password" name="password"></label><br>
+             <p>
+               *Please make a password with at least 8 characters
+             </p>
+             <label class='form'>Confirm PW: <input type="password" name="confirm"></label><br>
+             <label class='form'>Date of Hirded: <input type="date" name="doh"></label><br>
+             <input type="submit" name="form_button" value="Register">
+      </form>
+  </div>
+  <div class="block">
+    <h1>
+      Login
+    </h1>
+                {%if messages%}
+                  {%for message in messages%}
+                    {% if message.tags == 'info'%}
+                    <p>{{message}}</p>
+                    {%endif%}
+                  {%endfor%}
+                {%endif%}
+
+    <form class="" action="/process" method="post">
+      {%csrf_token%}
+      <label class="form">Username: <input type="text" name="username"></label><br>
+      <label class="form">Password: <input type="password" name="password"></label>
+      <input type="submit" name="form_button" value="Login">
+    </form>
+  </div>
+  </body>
+</html>

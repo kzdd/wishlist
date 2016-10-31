@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'wishlists/css/style_a.css' %}" media="screen">
+    </head>
+    <body>
+        <h1>Create a New Wish List Item</h1>
+        <div id="header">
+            <a href="{% url 'wishlist:dashboard' %}">Home</a>
+            <a href="{% url 'login:logout' %}">Logout</a>
+        </div>
+        <form action="{% url 'wishlist:add' %}" method="post">
+
+            {% csrf_token %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+            <p>Item/Product: <input type="text" name="product"></p>
+
+            <input type="submit" value="Add">
+        </form>
+    </body>
+</html>

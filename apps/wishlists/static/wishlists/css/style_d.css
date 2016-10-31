@@ -1,0 +1,27 @@
+table{
+    border-style: solid;
+    border-width: thin;
+}
+
+tr.border td{
+    border-top: 1px solid;
+}
+
+#header a{
+    display: inline-block;
+    position: absolute;
+    left: 500px;
+}
+
+#header h2{
+    display: inline-block;
+}
+
+#owishlist{
+    margin-top: 60px;
+}
+
+#create{
+    margin-top: 20px;
+    margin-left: 500px;
+}
